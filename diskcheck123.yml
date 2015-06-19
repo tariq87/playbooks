@@ -1,11 +1,11 @@
 ---
-- hosts: all
+- hosts: delmerbeperf01.sapient.com
   
   tasks:
   - shell: echo "System is running on low disk"
     register: disk
   - debug: var=disk.stdout_lines
     with_items: ansible_mounts
-    when: (item.mount == /) and (item.size_available < item.size_total) 
+    when: (item.mount == '/') and (item.size_available < (item.size_total*60)/100 ) 
 
   
