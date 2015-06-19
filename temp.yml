@@ -1,0 +1,6 @@
+---
+- hosts: emsservers
+  tasks:
+  - assert: { that: "System is running on low disk space" } 
+    with_items: ansible_mounts
+    when: item.mount == '/' and item.size_available < item.size_total 

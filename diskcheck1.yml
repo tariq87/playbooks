@@ -1,0 +1,7 @@
+---
+- hosts: all
+  tasks:
+  - name: Check Server Health
+    script: /root/monitor/tecmint_monitor.sh
+    register: save
+  - debug: var="save.stdout_lines" 

@@ -1,0 +1,13 @@
+---
+- hosts: ldgrvmertbwu104.ladsys.net
+  tasks:
+   - name: check disk space of Dev Machines
+     command: df -h 
+     register: check
+   - debug: var=check.stdout_lines
+
+   - name: check memory on dev machine
+     command: free -m
+     register: mem
+   - debug: var=mem.stdout_lines
+   

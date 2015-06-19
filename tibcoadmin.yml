@@ -1,0 +1,12 @@
+---
+- hosts: delvmlxladbw201.sapient.com
+  remote_user: tibco
+  tasks:
+    - name: Killing Tibco Admin Process
+      command: pkill tibcoadmin
+  
+    - name: Starting Tibco Admin
+      shell: cd /opt/tibco/administrator/domain/MERTIBR173/bin ;  nohup ./tibcoadmin_MERTIBR173 &
+      async: 45
+      poll: 0
+

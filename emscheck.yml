@@ -1,0 +1,8 @@
+---
+- hosts: emsservers
+  tasks: 
+  - name: Check EMS Queues
+    script: /root/emsque.sh
+    register: ems
+  - debug: var=ems.stdout_lines
+  

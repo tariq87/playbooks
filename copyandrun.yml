@@ -1,0 +1,11 @@
+---
+- hosts: all
+  tasks:
+  - name: Copy the script
+    copy: 'src=/root/monitor/tecmint_monitor.sh dest=/root/monitor.sh mode=777'
+  
+
+  - name: Execute script
+    shell: sh /root/monitor.sh
+    register: test
+  - debug: var=test.stdout_lines
